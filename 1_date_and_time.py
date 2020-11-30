@@ -1,3 +1,5 @@
+import datetime
+
 """
 Домашнее задание №2
 
@@ -8,21 +10,27 @@
 
 """
 
+
 def print_days():
-    """
-    Эта функция вызывается автоматически при запуске скрипта в консоли
-    В ней надо заменить pass на ваш код
-    """
-    pass
+    timedeltas = {
+        0: 'today',
+        1: 'yesterday',
+        30: '30 days ago'
+        }
+    for delta, message in timedeltas.items():
+        print(
+            f'{message.capitalize(): <12}:',
+            f'{datetime.date.today() - datetime.timedelta(days=delta)}'
+            )
 
 
 def str_2_datetime(date_string):
-    """
-    Эта функция вызывается автоматически при запуске скрипта в консоли
-    В ней надо заменить pass на ваш код
-    """
-    pass
+    return datetime.datetime.strptime(
+        date_string,
+        '%d/%m/%y %H:%M:%S.%f'
+        )
+
 
 if __name__ == "__main__":
     print_days()
-    print(str_2_datetime("01/01/20 12:10:03.234567"))
+    print(str_2_datetime('01/01/20 12:10:03.234567'))
